@@ -24,6 +24,8 @@ services:
       dockerfile: CustomerWebApi/Dockerfile
     networks:
       - backend
+    ports:
+      - 18002:1433
     environment:
       - DB_HOST=customerdb
       - DB_NAME=dms_customer
@@ -47,6 +49,8 @@ services:
       dockerfile: ProductWebApi/Dockerfile
     networks:
       - backend
+    ports:
+      - 18004:1433
     environment:
       - DB_HOST=productdb
       - DB_NAME=dms_product
@@ -68,6 +72,8 @@ services:
       dockerfile: OrderWebApi/Dockerfile
     networks:
       - backend
+    ports:
+      - 18006:27017
     environment:
       - DB_HOST=orderdb
       - DB_NAME=dms_order 

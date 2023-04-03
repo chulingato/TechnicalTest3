@@ -52,5 +52,30 @@ namespace ProductWebApi.Controllers
             await _dbContext.SaveChangesAsync();
             return Ok();
         }
+
+        [HttpPut("{productId}/stock/{quantity}")]
+        public async Task<IActionResult> UpdateStock(string productId, int quantity)
+        {
+            Product product = await _dbContext.Products.FindAsync(productId); ;
+               
+            if (product.ProductStock <= 0)
+            {
+                return BadRequest("Stock insuficiente");
+            }
+            product.ProductStock = quantity;
+            _dbContext.Products.Update(product);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpGet("{productId:int}/quantity")]
+        public async Task<ActionResult<int>> GetQuantity(int productId)
+        {
+            var product = await _dbContext.Products.FindAsync(productId);
+            if (product == null) return NotFound();
+            return product.ProductStock;
+        }
+
     }
 }

@@ -17,5 +17,8 @@ namespace OrderWebApi.Models
 
         [BsonElement("order_details")]
         public List<OrderDetail> OrderDetails { get; set; }
+
+        [BsonElement("status"), BsonRepresentation(BsonType.String)]
+        public string status { get; set; }
     }
 }
