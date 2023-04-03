@@ -1,10 +1,28 @@
-[{
-  "id": "[id]",
-  "name": "[nombre]",
-  "description": "[descripcion]",
-  "price": [precio],
-  "stock": [stock]
-}]```
+## Endpoints Documentation
+
+### Microservices Product and Order solution
+
+#### GET /api/products
+
+Get all products.
+
+#### GET /api/products/{id}
+
+Get a product by ID.
+
+#### POST /api/products
+
+Create a new product.
+
+##### Request Body
+
+```json
+{
+    "name": "Product Name",
+    "price": 10.5,
+    "stock": 100
+}
+```
 
 ### Create Product
 
@@ -31,7 +49,8 @@ Crea un nuevo producto.
   "description": "[descripcion]",
   "price": [precio],
   "stock": [stock]
-}```
+}
+```
 
 #### Respuesta exitosa
 
@@ -46,7 +65,8 @@ Crea un nuevo producto.
   "description": "[descripcion]",
   "price": [precio],
   "stock": [stock]
-}```
+}
+```
 
 ### Update Product
 
@@ -73,7 +93,8 @@ Actualiza un producto existente.
   "description": "[descripcion]",
   "price": [precio],
   "stock": [stock]
-}```
+}
+```
 
 #### Respuesta exitosa
 
@@ -88,7 +109,8 @@ Actualiza un producto existente.
   "description": "[descripcion]",
   "price": [precio],
   "stock": [stock]
-}```
+}
+```
 
 ### Delete Product
 
@@ -129,7 +151,8 @@ Obtiene todas las órdenes de compra.
     }
   ],
   "total": [total]
-}]```
+}]
+```
 
 ### Create Order
 
@@ -146,3 +169,91 @@ Crea una nueva orden de compra.
 | userId      | string | ID del usuario que realiza la orden |
 | items  | array | Arreglo de objetos que contienen el ID del producto y la cantidad |
 | total  |
+
+## Customer API
+
+### Get Customers
+
+Obtiene todos los clientes.
+
+**Endpoint:** `/api/customer`
+
+**Método HTTP:** GET
+
+#### Respuesta exitosa
+
+**Código de estado HTTP:** 200
+
+**Ejemplo de respuesta:**
+
+```json
+[{
+  "customerId": 1,
+  "customerName": "Juan Perez",
+  "mobileNumber": "1234567890",
+  "email": "juan.perez@example.com"
+}]
+```
+## Get Customer by Id
+### Obtiene un cliente por su identificador.
+
+**Endpoint:** `/api/customer/{customerId}`
+
+**Método HTTP:** GET
+
+### Respuesta exitosa
+**Código de estado HTTP:** 200
+
+**Ejemplo de respuesta:**
+```json
+{
+  "customerId": 1,
+  "customerName": "Juan Perez",
+  "mobileNumber": "1234567890",
+  "email": "juan.perez@example.com"
+}
+```
+
+## Create Customer
+### Crea un nuevo cliente.
+
+**Endpoint:** `/api/customer`
+
+**Método HTTP:** POST
+
+**Cuerpo de solicitud**
+```json
+{
+  "customerName": "Juan Perez",
+  "mobileNumber": "1234567890",
+  "email": "juan.perez@example.com"
+}
+```
+
+## Update Customer
+### Actualiza un cliente existente.
+
+**Endpoint:** `/api/customer`
+
+**Método HTTP:** PUT
+
+**Cuerpo de solicitud**
+```json
+{
+  "customerId": 1,
+  "customerName": "Juan Perez",
+  "mobileNumber": "1234567890",
+  "email": "juan.perez@example.com"
+}
+```
+
+## Delete Customer
+### Elimina un cliente existente.
+
+**Endpoint:** `/api/customer/{customerId}`
+
+**Método HTTP:** DELETE
+
+**Respuesta exitosa**
+**Código de estado HTTP:** 200
+
